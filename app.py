@@ -1,7 +1,3 @@
-# 5- Clicar em cada campo e preencher com a informação extraída da planilha
-# 6- Clicar em cadastrar
-# 7- Repetir os passos 5 e 6
-
 import openpyxl.workbook
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -33,6 +29,7 @@ sleep(5)
 empresas = openpyxl.load_workbook('./empresas.xlsx')
 pagina_empresas = empresas['dados empresas']
 
+# 5- Clicar em cada campo e preencher com a informação extraída da planilha
 for linha in pagina_empresas.iter_rows(min_row=2,values_only=True):
 
     nome_empresa, e_mail, telefone, endereco, cnpj, area_atuacao, quantidade_de_funcionarios, data_fundacao = linha
@@ -54,8 +51,11 @@ for linha in pagina_empresas.iter_rows(min_row=2,values_only=True):
     driver.find_element(By.ID,'dataFundacao').send_keys(data_fundacao)
     sleep(1)
 
+# 6- Clicar em cadastrar
     driver.find_element(By.ID,'Cadastrar').click()
     sleep(3)
+
+
 
 
 
